@@ -1,5 +1,7 @@
 # Discussion
 
+link to repo: [https://github.com/nicwestvold/solace](https://github.com/nicwestvold/solace)
+
 ## Decisions made
 
 - updated the postgres docker-compose file to use a version of postgres that had pgvector support

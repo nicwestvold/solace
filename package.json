@@ -1,0 +1,45 @@
+{
+  "name": "solace-candidate-assignment",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate": "drizzle-kit generate",
+    "migrate:up": "node ./src/db/migrate.js",
+    "seed": "node --loader esbuild-register/loader -r esbuild-register ./src/db/seed/index.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tanstack/react-query": "^5.82.0",
+    "@tanstack/react-table": "^8.21.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.32.2",
+    "lucide-react": "^0.525.0",
+    "next": "^14.2.30",
+    "openai": "^5.9.0",
+    "postgres": "^3.4.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.6",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "drizzle-kit": "^0.23.2",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
+  }
+}

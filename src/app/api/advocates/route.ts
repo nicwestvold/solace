@@ -1,6 +1,15 @@
 import db from "../../../db";
 import { advocates } from "../../../db/schema";
-import { and, or, ilike, count, SQL, sql } from "drizzle-orm";
+import {
+  and,
+  or,
+  ilike,
+  count,
+  SQL,
+  sql,
+  cosineDistance,
+  desc,
+} from "drizzle-orm";
 import { generateSpecialtyEmbedding } from "../../../lib/openai";
 // import { advocateData } from "../../../db/seed/advocates";
 
@@ -39,11 +48,16 @@ export async function GET(request: Request) {
               or(
                 nameSearch,
                 citySearch,
-                sql`${advocates.specialtyEmbedding} <=> ${searchEmbedding} < 0.8` // Similarity threshold
+                sql`${cosineDistance(
+                  advocates.specialtyEmbedding,
+                  searchEmbedding
+                )} < 0.8`
               )
             )
           )
-          .orderBy(sql`${advocates.specialtyEmbedding} <=> ${searchEmbedding}`)
+          .orderBy(
+            desc(cosineDistance(advocates.specialtyEmbedding, searchEmbedding))
+          )
           .limit(limit)
           .offset(offset);
 
@@ -56,7 +70,10 @@ export async function GET(request: Request) {
               or(
                 nameSearch,
                 citySearch,
-                sql`${advocates.specialtyEmbedding} <=> ${searchEmbedding} < 0.8`
+                sql`${cosineDistance(
+                  advocates.specialtyEmbedding,
+                  searchEmbedding
+                )} < 0.8`
               )
             )
           );
